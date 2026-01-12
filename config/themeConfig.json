@@ -1,0 +1,29 @@
+{
+    "colors": {
+        "primary": "#3498db",
+        "secondary": "#2ecc71",
+        "background": "#f4f4f4",
+        "text": "#333"
+    },
+    "menu": [
+        {
+            "label": "Dashboard",
+            "path": "/dashboard",
+            "icon": "home"
+        },
+        {
+            "label": "Profile",
+            "path": "/profile",
+            "icon": "user"
+        },
+        {
+            "label": "Settings",
+            "path": "/settings",
+            "icon": "settings"
+        }
+    ],
+    "logo": {
+        "src": "/logo.png",
+        "miniLogo": "/logo-mini.png"
+    }
+}
