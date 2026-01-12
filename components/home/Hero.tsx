@@ -9,7 +9,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onStart }) => {
     return (
-        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+        <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center max-w-4xl mx-auto">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-primary-700 text-sm font-semibold mb-6">

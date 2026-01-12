@@ -1,16 +1,11 @@
-import { Suspense } from "react";
+// app/[lang]/page.tsx
 import HomeData from "@/components/home/HomeData";
 
-export default async function page({
-  params: paramsPromise,
-}: {
-  params: Promise<{ lang: string; id: string }>;
-}) {
-  const { lang } = await paramsPromise;
+type Props = {
+  params: Promise<{ lang: string }>;
+};
 
-  return (
-    <Suspense fallback={<div aria-busy="true" />}>
-      <HomeData lang={lang} />
-    </Suspense>
-  );
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return <HomeData lang={lang} />;
 }

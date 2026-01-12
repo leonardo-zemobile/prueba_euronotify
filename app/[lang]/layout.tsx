@@ -22,11 +22,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+type LangParams = { lang: string };
+
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string };
+  params: Promise<LangParams>;
 }): Promise<Metadata> {
+  // Next puede entregar params como Promise en Server Components
+  const { lang } = await params;
+
+  // Si querés variar metadata por idioma, ya tenés `lang` disponible.
   return {
     title: "Website title",
     description: "Website Slogan",
@@ -40,6 +46,8 @@ export async function generateMetadata({
       title: "Website title",
       description: "Website Slogan",
       images: ["/og-default.png"],
+      // opcional: locale en base al lang
+      // locale: lang,
     },
     twitter: {
       card: "summary_large_image",
@@ -50,14 +58,14 @@ export async function generateMetadata({
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<LangParams>;
 }>) {
-  const { lang } = params;
+  const { lang } = await params;
 
   return (
     <html lang={lang}>
@@ -126,4 +134,7 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+export function generateStaticParams() {
+  return [{ lang: "es" }, { lang: "en" }];
 }
